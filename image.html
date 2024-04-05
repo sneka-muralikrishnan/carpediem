@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .upload-container {
+      margin-top: 100px;
+    }
+    .upload-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .upload-button:hover {
+      background-color: #0056b3;
+    }
+    #imagePreview {
+      max-width: 300px;
+      margin: 20px auto;
+    }
+    #nextButton {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+    <button class="upload-button" onclick="document.getElementById('fileInput').click();">Upload Image</button>
+    <button class="upload-button" onclick="openCamera()">Access Camera</button>
+    <button id="nextButton" class="upload-button" onclick="moveToNextPage()">Next</button>
+    <div id="imagePreview"></div>
+  </div>
+
+  <script>
+    function openCamera() {
+      // Code to open camera goes here
+      alert("Camera access not implemented in this demo.");
+    }
+
+    function moveToNextPage() {
+      // Retrieve the image data URL
+      var imageData = document.getElementById('imagePreview').querySelector('img').src;
+      
+      // Store the image data URL in sessionStorage
+      sessionStorage.setItem('selectedImage', imageData);
+      
+      // Redirect to the next page
+      window.location.href = "next_next_page.html"; // Replace "next_next_page.html" with the URL of your next page
+    }
+
+    // Function to handle file input change (when an image is selected)
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+      var file = event.target.files[0];
+      if (file) {
+        // Read the selected file and display it as image preview
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var imagePreview = document.getElementById('imagePreview');
+          imagePreview.innerHTML = '<img src="' + e.target.result + '" alt="Image Preview">';
+          // Show the "Next" button after successful image preview
+          document.getElementById('nextButton').style.display = 'inline-block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
