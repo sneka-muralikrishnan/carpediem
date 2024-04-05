@@ -39,7 +39,7 @@
     <input type="file" id="fileInput" style="display: none;" accept="image/*">
     <button class="upload-button" onclick="document.getElementById('fileInput').click();">Upload Image</button>
     <button class="upload-button" onclick="openCamera()">Access Camera</button>
-    <button id="nextButton" class="upload-button" onclick="moveToNextPage()">Next</button>
+    <button id="nextButton" class="upload-button" ><a href={{url_for("comment")}}>Next</a></button>
     <div id="imagePreview"></div>
   </div>
 
