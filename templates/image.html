@@ -51,10 +51,7 @@
 
     function moveToNextPage() {
       // Retrieve the image data URL
-      var imageData = document.getElementById('imagePreview').querySelector('img').src;
       
-      // Store the image data URL in sessionStorage
-      sessionStorage.setItem('selectedImage', imageData);
       
       // Redirect to the next page
       window.location.href = "next_next_page.html"; // Replace "next_next_page.html" with the URL of your next page
@@ -69,6 +66,10 @@
         reader.onload = function(e) {
           var imagePreview = document.getElementById('imagePreview');
           imagePreview.innerHTML = '<img src="' + e.target.result + '" alt="Image Preview">';
+          var imageData = document.getElementById('imagePreview').querySelector('img').src;
+      
+      // Store the image data URL in sessionStorage
+      sessionStorage.setItem('selectedImage', imageData);
           // Show the "Next" button after successful image preview
           document.getElementById('nextButton').style.display = 'inline-block';
         };

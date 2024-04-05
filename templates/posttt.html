@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final Page</title>
+  <style>
+    /* CSS styles */
+  </style>
+</head>
+<body>
+  <h2>Uploaded Image:</h2>
+  <img id="imagePreview" src="#" alt="Uploaded Image">
+  <h2>Description:</h2>
+  <div id="description"></div>
+  <button><a href={{url_for("imageupload")}}>EDIT IMAGE</a></button>
+  <button><a href={{url_for("comment")}}>EDIT COMMENT</a></button>
+  <button><a href={{url_for("success")}}>POST</a></button>
+
+  <script>
+    // Retrieve image data and description from session storage
+    var imageData = sessionStorage.getItem('selectedImage');
+    var description = sessionStorage.getItem('description');
+
+    // Set the image source
+    var imagePreview = document.getElementById('imagePreview');
+    imagePreview.src = imageData;
+
+    // Set the description content
+    var descriptionDiv = document.getElementById('description');
+    descriptionDiv.textContent = description;
+  </script>
+</body>
+</html>
